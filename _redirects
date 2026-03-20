@@ -1,0 +1,3 @@
+# Redirect non-www to www
+http://bmicheckcalculator.org/* https://www.bmicheckcalculator.org/:splat 301!
+https://bmicheckcalculator.org/* https://www.bmicheckcalculator.org/:splat 301!
