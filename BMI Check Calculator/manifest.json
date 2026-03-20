@@ -1,0 +1,54 @@
+{
+  "name": "BMI Check Calculator",
+  "short_name": "BMI Check",
+  "description": "Free BMI calculator with animated speedometer. Check your Body Mass Index instantly.",
+  "start_url": "https://www.bmicheckcalculator.org/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f0f4f0",
+  "theme_color": "#2d7d46",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": [
+    "health",
+    "fitness",
+    "medical"
+  ],
+  "shortcuts": [
+    {
+      "name": "BMI Calculator",
+      "url": "https://www.bmicheckcalculator.org/",
+      "description": "Calculate your BMI"
+    },
+    {
+      "name": "Calorie Calculator",
+      "url": "https://www.bmicheckcalculator.org/calorie-calculator.html",
+      "description": "Calculate daily calorie needs"
+    },
+    {
+      "name": "BMI Chart",
+      "url": "https://www.bmicheckcalculator.org/bmi-chart.html",
+      "description": "BMI reference chart"
+    }
+  ],
+  "id": "https://www.bmicheckcalculator.org/"
+}
