@@ -1,3 +1,9 @@
-# Redirect non-www to www
-http://bmicheckcalculator.org/* https://www.bmicheckcalculator.org/:splat 301!
+# Cloudflare Pages Redirects
+
+# Redirect non-www to www (canonical domain)
 https://bmicheckcalculator.org/* https://www.bmicheckcalculator.org/:splat 301!
+http://bmicheckcalculator.org/* https://www.bmicheckcalculator.org/:splat 301!
+http://www.bmicheckcalculator.org/* https://www.bmicheckcalculator.org/:splat 301!
+
+# 404 fallback
+/* /404.html 404

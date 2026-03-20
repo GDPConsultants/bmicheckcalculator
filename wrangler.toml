@@ -1,0 +1,8 @@
+name = "bmicheckcalculator"
+compatibility_date = "2025-03-15"
+
+[site]
+bucket = "."
+
+[env.production]
+name = "bmicheckcalculator"
