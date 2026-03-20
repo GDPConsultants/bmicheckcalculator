@@ -4,9 +4,8 @@
   "description": "Free BMI Check Calculator - bmicheckcalculator.org",
   "private": true,
   "scripts": {
-    "deploy": "wrangler pages deploy . --project-name=bmicheckcalculator",
-    "build": "echo 'Static site - no build needed'"
+    "deploy": "wrangler pages deploy .",
+    "build": "echo 'Static site - no build step required'"
   },
-  "keywords": ["bmi", "calculator", "health"],
   "license": "MIT"
 }
