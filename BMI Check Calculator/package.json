@@ -1,11 +1,9 @@
 {
   "name": "bmicheckcalculator",
   "version": "1.0.0",
-  "description": "Free BMI Check Calculator - bmicheckcalculator.org",
   "private": true,
   "scripts": {
-    "deploy": "wrangler pages deploy .",
-    "build": "echo 'Static site - no build step required'"
-  },
-  "license": "MIT"
+    "build": "echo 'No build needed - static HTML site'",
+    "deploy": "wrangler pages deploy ."
+  }
 }
