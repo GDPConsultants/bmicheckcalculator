@@ -64,13 +64,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
   /* === SHARED BASE STYLES (inlined for standalone operation) === */
-/* ===================================================
-   BMICalc — Shared Stylesheet
-   All pages share this CSS for consistency
-=================================================== */
-
-/* Google Fonts are loaded per-page via <link> */
-
 :root {
   --bg: #f0f4f0;
   --surface: #ffffff;
@@ -112,7 +105,6 @@
   --shadow-md: 0 4px 16px rgba(0,0,0,.4);
   --shadow-lg: 0 12px 40px rgba(0,0,0,.5);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
@@ -123,8 +115,6 @@ body {
   min-height: 100vh;
   transition: background var(--transition), color var(--transition);
 }
-
-/* ===== SKIP LINK ===== */
 .skip-link {
   position: absolute; left: -9999px; top: .5rem;
   background: var(--accent); color: white;
@@ -132,15 +122,11 @@ body {
   font-weight: 700; z-index: 999; text-decoration: none;
 }
 .skip-link:focus { left: .5rem; }
-
-/* ===== PROGRESS BAR ===== */
 #progress-bar {
   position: fixed; top: 0; left: 0; height: 3px;
   background: var(--accent); width: 0%; z-index: 9999;
   transition: width .2s; border-radius: 0 2px 2px 0;
 }
-
-/* ===== TOP BAR ===== */
 .top-bar {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -170,8 +156,6 @@ body {
   transition: all var(--transition);
 }
 .icon-btn:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
-
-/* ===== SITE NAV ===== */
 .site-nav {
   background: var(--surface2);
   border-bottom: 1px solid var(--border);
@@ -196,8 +180,6 @@ body {
 }
 .nav-link:hover { color: var(--accent); background: var(--accent-light); }
 .nav-link.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-/* ===== HERO ===== */
 .hero {
   background: linear-gradient(135deg, #1a3d1a 0%, #2d7d46 50%, #1a4a2e 100%);
   color: white; text-align: center;
@@ -234,8 +216,6 @@ body {
 }
 .breadcrumb a { color: white; text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
-
-/* ===== MAIN LAYOUT ===== */
 .main-wrap {
   max-width: 1200px; margin: 0 auto;
   padding: 2rem 1.5rem;
@@ -247,8 +227,6 @@ body {
   .sidebar { order: 3; }
 }
 .main-col { min-width: 0; }
-
-/* ===== CARDS ===== */
 .card {
   background: var(--surface);
   border-radius: var(--radius-lg);
@@ -263,8 +241,6 @@ body {
 .card-header h2 { font-family: var(--font-display); font-size: 1.4rem; }
 .card-body { padding: 2rem; }
 @media (max-width: 600px) { .card-body { padding: 1.25rem; } }
-
-/* ===== INPUTS ===== */
 .input-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 1.25rem; margin-bottom: 1.5rem;
@@ -300,8 +276,6 @@ body {
 select.input-field { padding-right: 2rem; cursor: pointer; }
 .error-msg { font-size: .78rem; color: var(--red); display: none; }
 .error-msg.visible { display: block; }
-
-/* ===== UNIT TOGGLE ===== */
 .unit-toggle {
   display: flex; background: var(--surface2);
   border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;
@@ -312,11 +286,7 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   cursor: pointer; color: var(--text-secondary); transition: all var(--transition);
 }
 .unit-btn.active { background: var(--accent); color: white; border-radius: var(--radius-sm); }
-
-/* ===== SEX / ACTIVITY TOGGLES ===== */
-.choice-group {
-  display: grid; gap: .5rem;
-}
+.choice-group { display: grid; gap: .5rem; }
 .choice-group.cols-2 { grid-template-columns: 1fr 1fr; }
 .choice-group.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 .choice-btn {
@@ -330,8 +300,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   border-color: var(--accent); background: var(--accent-light); color: var(--accent);
 }
 .choice-btn small { display: block; font-size: .7rem; font-weight: 400; opacity: .7; }
-
-/* ===== CALCULATE BUTTON ===== */
 .calc-btn {
   width: 100%; padding: 1.1rem 2rem;
   background: var(--accent); color: white; border: none;
@@ -351,19 +319,16 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   cursor: pointer; transition: all var(--transition);
 }
 .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ===== RESULTS ===== */
 .results {
   margin-top: 1.5rem; display: none;
-  animation: slideUp .4s ease;
+  animation: fadeSlideUp .5s cubic-bezier(.4,0,.2,1);
 }
 .results.visible { display: block; }
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes fadeSlideUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 .result-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
-
 .result-hero {
   background: var(--surface2); border-radius: var(--radius);
   padding: 1.5rem; text-align: center;
@@ -377,7 +342,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 }
 .result-label { font-size: 1.2rem; font-weight: 700; margin-bottom: .4rem; }
 .result-desc { font-size: .85rem; color: var(--text-muted); max-width: 380px; margin: 0 auto; }
-
 .stats-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1rem; margin-top: 1.25rem;
@@ -392,7 +356,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   text-transform: uppercase; letter-spacing: .06em; margin-bottom: .3rem;
 }
 .stat-chip-value { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
-
 .result-table { width: 100%; border-collapse: collapse; margin-top: 1.25rem; font-size: .88rem; }
 .result-table th {
   background: var(--surface2); padding: .65rem 1rem; text-align: left;
@@ -407,8 +370,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   display: inline-block; width: 10px; height: 10px;
   border-radius: 50%; margin-right: .4rem;
 }
-
-/* ===== CONTENT SECTIONS ===== */
 .content-section {
   background: var(--surface); border-radius: var(--radius-lg);
   padding: 2rem; margin-bottom: 1.5rem;
@@ -419,21 +380,15 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   display: flex; align-items: center; gap: .6rem;
 }
 .section-title.sm { font-size: 1.3rem; }
-.content-section h2, .content-section h3 {
-  font-family: var(--font-display);
-}
+.content-section h2, .content-section h3 { font-family: var(--font-display); }
 .content-section h2 { font-size: 1.6rem; margin-bottom: .9rem; }
 .content-section h3 { font-size: 1.15rem; font-weight: 700; margin: 1.4rem 0 .6rem; }
 .content-section h4 { font-size: 1rem; font-weight: 700; margin: 1rem 0 .4rem; color: var(--text-secondary); }
 .content-section p {
   color: var(--text-secondary); line-height: 1.8; margin-bottom: .9rem; font-size: .95rem;
 }
-.content-section ul, .content-section ol {
-  padding-left: 1.5rem; margin-bottom: 1rem;
-}
-.content-section li {
-  padding: .3rem 0; color: var(--text-secondary); font-size: .95rem; line-height: 1.7;
-}
+.content-section ul, .content-section ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+.content-section li { padding: .3rem 0; color: var(--text-secondary); font-size: .95rem; line-height: 1.7; }
 .content-section table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: .9rem; }
 .content-section th {
   background: var(--surface2); padding: .65rem 1rem; text-align: left;
@@ -441,8 +396,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 }
 .content-section td { padding: .65rem 1rem; border: 1px solid var(--border); color: var(--text-secondary); }
 .content-section tr:nth-child(even) td { background: var(--surface2); }
-
-/* ===== INFO BOXES ===== */
 .info-box {
   border-radius: var(--radius-sm); padding: 1rem 1.25rem;
   margin: 1rem 0; font-size: .9rem; line-height: 1.6;
@@ -456,8 +409,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 [data-theme="dark"] .info-box.blue  { background: #1e2a3a; color: #93c5fd; }
 [data-theme="dark"] .info-box.yellow{ background: #2d2200; color: #fde047; }
 [data-theme="dark"] .info-box.red   { background: #2d1010; color: #fca5a5; }
-
-/* ===== TIPS GRID ===== */
 .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
 .tip-card {
   background: var(--surface); border: 1px solid var(--border);
@@ -468,8 +419,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 .tip-icon { font-size: 2rem; margin-bottom: .75rem; display: block; }
 .tip-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: .4rem; }
 .tip-text { font-size: .88rem; color: var(--text-secondary); line-height: 1.6; }
-
-/* ===== FAQ ===== */
 .faq-item { border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: .75rem; overflow: hidden; }
 .faq-q {
   width: 100%; background: var(--surface); border: none;
@@ -487,8 +436,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   color: var(--text-secondary); line-height: 1.7;
 }
 .faq-a.open { display: block; }
-
-/* ===== SIDEBAR ===== */
 .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
 .sidebar-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
 .sidebar-card-header {
@@ -497,8 +444,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   display: flex; align-items: center; gap: .5rem;
 }
 .sidebar-card-body { padding: 1.25rem; }
-
-/* Quick Reference */
 .qr-item {
   display: flex; align-items: center; justify-content: space-between;
   padding: .55rem 0; border-bottom: 1px solid var(--border); font-size: .88rem;
@@ -506,8 +451,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 .qr-item:last-child { border-bottom: none; }
 .qr-cat { display: flex; align-items: center; gap: .5rem; color: var(--text-secondary); font-weight: 500; }
 .qr-range { font-weight: 700; color: var(--text-primary); font-size: .85rem; }
-
-/* Related Links */
 .related-link {
   display: flex; align-items: center; gap: .75rem;
   padding: .7rem 0; border-bottom: 1px solid var(--border);
@@ -519,8 +462,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 .related-link .icon { font-size: 1.3rem; width: 34px; height: 34px;
   background: var(--accent-light); border-radius: 8px;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-/* Share buttons */
 .share-btns { display: flex; gap: .5rem; flex-wrap: wrap; }
 .share-btn {
   flex: 1; padding: .55rem; border: 1px solid var(--border);
@@ -532,8 +473,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   gap: .3rem; text-decoration: none;
 }
 .share-btn:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
-
-/* ===== AD UNITS ===== */
 .ad-unit {
   background: var(--surface2); border: 1px dashed var(--border);
   border-radius: var(--radius-sm); display: flex;
@@ -543,8 +482,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
 }
 .ad-leaderboard { width: 100%; min-height: 90px; margin: 0 auto 1.5rem; }
 .ad-rectangle { width: 100%; min-height: 250px; margin: 1.5rem 0; }
-
-/* ===== DISCLAIMER ===== */
 .disclaimer {
   background: #fef9c3; border: 1px solid #fde047;
   border-radius: var(--radius-sm); padding: .75rem 1rem;
@@ -552,8 +489,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   margin-top: 1.5rem; max-width: 1200px; margin-left: auto; margin-right: auto;
 }
 [data-theme="dark"] .disclaimer { background: #2d2200; border-color: #4d3800; color: #fbbf24; }
-
-/* ===== FOOTER ===== */
 .footer {
   background: var(--surface); border-top: 1px solid var(--border);
   margin-top: 3rem; padding: 2rem 1.5rem 1.5rem;
@@ -576,8 +511,6 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: .75rem; font-size: .8rem; color: var(--text-muted);
 }
-
-/* ===== TOAST ===== */
 .toast {
   position: fixed; bottom: 1.5rem; left: 50%;
   transform: translateX(-50%) translateY(100px);
@@ -587,20 +520,14 @@ select.input-field { padding-right: 2rem; cursor: pointer; }
   transition: transform .3s cubic-bezier(.4,0,.2,1); white-space: nowrap;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
-
-/* ===== CONTACT FORM ===== */
 .form-group { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.25rem; }
 .form-label { font-size: .9rem; font-weight: 600; color: var(--text-secondary); }
 textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical; font-family: var(--font-body); }
-
-/* ===== PRIVACY/TERMS ===== */
 .legal-section { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
 .legal-section:last-child { border-bottom: none; }
 .legal-section h2 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: .75rem; }
 .legal-section p, .legal-section li { font-size: .92rem; color: var(--text-secondary); line-height: 1.8; }
 .legal-section ul { padding-left: 1.5rem; margin: .5rem 0 1rem; }
-
-/* ===== UTILITIES ===== */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .text-center { text-align: center; }
 .text-accent { color: var(--accent); }
@@ -619,7 +546,6 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
 [data-theme="dark"] .badge-red { background: #2d1010; color: #fca5a5; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
-
 @media print {
   .top-bar, .site-nav, .ad-unit, .sidebar, .footer, .calc-btn,
   .share-btns, .reset-btn { display: none !important; }
@@ -627,40 +553,20 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
   body { background: white; }
   .card, .content-section { box-shadow: none; border: 1px solid #ddd; }
 }
-
   /* === PAGE-SPECIFIC STYLES === */
-  /* ============================================================
-     ODOMETER / SPEEDOMETER RESULT STYLES
-  ============================================================ */
-
-  /* Results container */
-  .results {
-    margin-top: 1.5rem;
-    display: none;
-    animation: fadeSlideUp .5s cubic-bezier(.4,0,.2,1);
-  }
-  .results.visible { display: block; }
-  @keyframes fadeSlideUp {
-    from { opacity:0; transform:translateY(24px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  /* ── Speedometer Gauge ── */
   .gauge-card {
     background: var(--surface);
     border-radius: var(--radius-lg);
     padding: 1.75rem 1.5rem 1.25rem;
     box-shadow: var(--shadow-lg);
     border: 2px solid var(--border);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     transition: border-color .4s, box-shadow .4s;
     margin-bottom: 1.25rem;
   }
   .gauge-card::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.04) 0%, transparent 70%);
     pointer-events: none;
   }
@@ -670,159 +576,68 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
   .gauge-card.cat-obese1      { border-color: #f97316; box-shadow: 0 8px 40px rgba(249,115,22,.18); }
   .gauge-card.cat-obese2      { border-color: #ef4444; box-shadow: 0 8px 40px rgba(239,68,68,.18); }
   .gauge-card.cat-obese3      { border-color: #991b1b; box-shadow: 0 8px 40px rgba(153,27,27,.18); }
-
-  /* SVG Speedometer */
   .speedometer-wrap {
-    position: relative;
-    width: 300px;
-    height: 175px;
-    margin: 0 auto .75rem;
+    position: relative; width: 300px; height: 175px; margin: 0 auto .75rem;
   }
   @media(max-width:400px){ .speedometer-wrap { width:260px; height:152px; } }
-
   #speed-svg { width:100%; height:100%; overflow:visible; }
-
-  /* Track arc */
-  .speed-track {
-    fill: none;
-    stroke: var(--border);
-    stroke-width: 18;
-    stroke-linecap: round;
-  }
-  /* Category arc segments */
-  .speed-seg {
-    fill: none;
-    stroke-width: 18;
-    stroke-linecap: butt;
-    opacity: .25;
-  }
-  /* Active fill arc */
+  .speed-track { fill: none; stroke: var(--border); stroke-width: 18; stroke-linecap: round; }
+  .speed-seg { fill: none; stroke-width: 18; stroke-linecap: butt; opacity: .25; }
   .speed-fill {
-    fill: none;
-    stroke-width: 18;
-    stroke-linecap: round;
+    fill: none; stroke-width: 18; stroke-linecap: round;
     transition: stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1), stroke .4s;
   }
-  /* Needle */
   .needle-group {
     transform-origin: 150px 155px;
     transition: transform 1.2s cubic-bezier(.4,0,.2,1);
   }
-  .needle-line {
-    stroke: var(--text-primary);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-  }
-  .needle-hub {
-    fill: var(--text-primary);
-  }
-  /* Tick marks */
+  .needle-line { stroke: var(--text-primary); stroke-width: 2.5; stroke-linecap: round; }
+  .needle-hub { fill: var(--text-primary); }
   .speed-tick { stroke: var(--text-muted); stroke-width: 1; }
   .speed-tick-major { stroke: var(--text-muted); stroke-width: 2; }
-  /* BMI labels around arc */
   .speed-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    font-weight: 700;
-    fill: var(--text-muted);
-    text-anchor: middle;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700;
+    fill: var(--text-muted); text-anchor: middle;
   }
-  /* Center category text */
   .speed-cat-label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    fill: var(--text-muted);
-    text-anchor: middle;
-    text-transform: uppercase;
-    letter-spacing: .06em;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700;
+    fill: var(--text-muted); text-anchor: middle;
+    text-transform: uppercase; letter-spacing: .06em;
   }
-
-  /* ── Odometer Number Display ── */
-  .odometer-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 2px;
-    margin: .5rem 0 .25rem;
-  }
-  .odo-digit-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .odometer-wrap { display: flex; justify-content: center; align-items: flex-end; gap: 2px; margin: .5rem 0 .25rem; }
+  .odo-digit-wrap { display: flex; flex-direction: column; align-items: center; }
   .odo-window {
-    width: 48px;
-    height: 66px;
-    background: var(--surface2);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+    width: 48px; height: 66px; background: var(--surface2);
+    border: 2px solid var(--border); border-radius: 10px;
+    overflow: hidden; position: relative;
     box-shadow: inset 0 4px 12px rgba(0,0,0,.12);
   }
   @media(max-width:400px){ .odo-window { width:40px; height:56px; } }
   .odo-window::before, .odo-window::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    height: 22px;
-    z-index: 2;
-    pointer-events: none;
+    content: ''; position: absolute; left: 0; right: 0; height: 22px; z-index: 2; pointer-events: none;
   }
   .odo-window::before { top:0; background:linear-gradient(to bottom, var(--surface2) 0%, transparent 100%); }
   .odo-window::after  { bottom:0; background:linear-gradient(to top, var(--surface2) 0%, transparent 100%); }
-  .odo-strip {
-    position: absolute;
-    width: 100%;
-    transition: transform .8s cubic-bezier(.4,0,.2,1);
-  }
+  .odo-strip { position: absolute; width: 100%; transition: transform .8s cubic-bezier(.4,0,.2,1); }
   .odo-digit {
-    height: 66px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1;
+    height: 66px; display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 2.4rem; font-weight: 700;
+    color: var(--text-primary); line-height: 1;
   }
   @media(max-width:400px){ .odo-digit { height:56px; font-size:2rem; } }
   .odo-sep {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    line-height: 1;
-    margin-bottom: 8px;
-    margin-left: 2px;
-    margin-right: 2px;
+    font-family: 'JetBrains Mono', monospace; font-size: 2.4rem; font-weight: 700;
+    color: var(--text-primary); line-height: 1; margin-bottom: 8px; margin-left: 2px; margin-right: 2px;
   }
   .odo-unit {
-    font-size: .7rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    margin-top: 4px;
+    font-size: .7rem; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: .08em; margin-top: 4px;
   }
-
-  /* Category badge */
   .bmi-category-banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .6rem;
-    padding: .6rem 1.5rem;
-    border-radius: 100px;
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    margin: .75rem auto .5rem;
-    width: fit-content;
-    transition: background .4s, color .4s;
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+    padding: .6rem 1.5rem; border-radius: 100px; font-size: 1rem;
+    font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    margin: .75rem auto .5rem; width: fit-content; transition: background .4s, color .4s;
   }
   .cat-underweight .bmi-category-banner { background:#dbeafe; color:#1e3a8a; }
   .cat-normal      .bmi-category-banner { background:#dcfce7; color:#14532d; }
@@ -836,34 +651,16 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
   [data-theme="dark"] .cat-obese1      .bmi-category-banner { background:#2d1a0a; color:#fb923c; }
   [data-theme="dark"] .cat-obese2      .bmi-category-banner { background:#2d1010; color:#fca5a5; }
   [data-theme="dark"] .cat-obese3      .bmi-category-banner { background:#3d0505; color:#fca5a5; }
-
   .bmi-desc-text {
-    text-align: center;
-    font-size: .88rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 360px;
-    margin: .25rem auto .75rem;
+    text-align: center; font-size: .88rem; color: var(--text-muted);
+    line-height: 1.6; max-width: 360px; margin: .25rem auto .75rem;
   }
-
-  /* ── Animated Stat Cards ── */
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: .9rem;
-    margin-bottom: 1.25rem;
-  }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; margin-bottom: 1.25rem; }
   @media(max-width:480px){ .stat-row { grid-template-columns: 1fr 1fr; } }
-
   .stat-card {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: all .3s;
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 1rem; text-align: center;
+    position: relative; overflow: hidden; transition: all .3s;
     animation: statPop .5s cubic-bezier(.34,1.56,.64,1) both;
   }
   .stat-card:nth-child(1){animation-delay:.1s}
@@ -877,147 +674,74 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
     to   { opacity:1; transform:scale(1) translateY(0); }
   }
   .stat-card::before {
-    content:'';
-    position:absolute; top:0; left:0; right:0; height:3px;
-    border-radius:var(--radius) var(--radius) 0 0;
-    background: var(--accent);
-    transition: background .4s;
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    border-radius:var(--radius) var(--radius) 0 0; background: var(--accent); transition: background .4s;
   }
-  .stat-card .stat-icon {
-    font-size: 1.4rem;
-    display: block;
-    margin-bottom: .35rem;
-  }
+  .stat-card .stat-icon { font-size: 1.4rem; display: block; margin-bottom: .35rem; }
   .stat-card .stat-label {
-    font-size: .68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .07em;
-    color: var(--text-muted);
-    margin-bottom: .3rem;
+    font-size: .68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--text-muted); margin-bottom: .3rem;
   }
   .stat-card .stat-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    transition: color .3s;
+    font-family: 'JetBrains Mono', monospace; font-size: 1.05rem;
+    font-weight: 700; color: var(--text-primary); transition: color .3s;
   }
-  .stat-card .stat-sub {
-    font-size: .68rem;
-    color: var(--text-muted);
-    margin-top: .2rem;
-  }
-
-  /* ── BMI Scale Bar ── */
+  .stat-card .stat-sub { font-size: .68rem; color: var(--text-muted); margin-top: .2rem; }
   .bmi-scale-section {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
-    border: 1px solid var(--border);
+    background: var(--surface); border-radius: var(--radius); padding: 1.25rem;
+    margin-bottom: 1.25rem; border: 1px solid var(--border);
   }
   .bmi-scale-title {
-    font-size: .78rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: .07em;
-    margin-bottom: .75rem;
-    text-align: center;
+    font-size: .78rem; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: .07em; margin-bottom: .75rem; text-align: center;
   }
   .bmi-scale-track {
-    height: 28px;
-    border-radius: 100px;
+    height: 28px; border-radius: 100px;
     background: linear-gradient(to right,
-      #3b9fe8 0%, #3b9fe8 20%,
-      #2d7d46 20%, #2d7d46 43%,
-      #f59e0b 43%, #f59e0b 57%,
-      #f97316 57%, #f97316 68%,
-      #ef4444 68%, #ef4444 80%,
-      #991b1b 80%, #991b1b 100%);
-    position: relative;
-    margin-bottom: .5rem;
+      #3b9fe8 0%, #3b9fe8 20%, #2d7d46 20%, #2d7d46 43%,
+      #f59e0b 43%, #f59e0b 57%, #f97316 57%, #f97316 68%,
+      #ef4444 68%, #ef4444 80%, #991b1b 80%, #991b1b 100%);
+    position: relative; margin-bottom: .5rem;
   }
   .bmi-scale-pointer {
-    position: absolute;
-    top: -6px;
-    width: 40px;
-    height: 40px;
-    background: white;
-    border: 4px solid #1a2e1a;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    transition: left 1.2s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 4px 16px rgba(0,0,0,.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .62rem;
-    font-weight: 800;
-    font-family: 'JetBrains Mono', monospace;
-    color: var(--text-primary);
-    z-index: 2;
+    position: absolute; top: -6px; width: 40px; height: 40px;
+    background: white; border: 4px solid #1a2e1a; border-radius: 50%;
+    transform: translateX(-50%); transition: left 1.2s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 4px 16px rgba(0,0,0,.25); display: flex;
+    align-items: center; justify-content: center;
+    font-size: .62rem; font-weight: 800;
+    font-family: 'JetBrains Mono', monospace; color: var(--text-primary); z-index: 2;
   }
   [data-theme="dark"] .bmi-scale-pointer { background: var(--surface); }
   .bmi-scale-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: .68rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    padding: 0 2px;
+    display: flex; justify-content: space-between;
+    font-size: .68rem; font-weight: 600; color: var(--text-muted); padding: 0 2px;
   }
-  .bmi-scale-cats {
-    display: flex;
-    margin-top: .5rem;
-    border-radius: 6px;
-    overflow: hidden;
-    height: 8px;
-  }
+  .bmi-scale-cats { display: flex; margin-top: .5rem; border-radius: 6px; overflow: hidden; height: 8px; }
   .bmi-scale-cat { flex: 1; }
-
-  /* ── Table section toggle ── */
   .table-toggle-btn {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: .75rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-size: .9rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    transition: background var(--transition);
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: .75rem 1rem;
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; font-family: var(--font-body); font-size: .9rem;
+    font-weight: 600; color: var(--text-primary); transition: background var(--transition);
   }
   .table-toggle-btn:hover { background: var(--accent-light); }
   .table-content { display: none; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius-sm) var(--radius-sm); overflow: hidden; }
   .table-content.open { display: block; }
   .table-arrow { transition: transform .3s; }
   .table-toggle-btn.open .table-arrow { transform: rotate(180deg); }
-
-  /* ── Voice Section ── */
   .voice-section {
-    margin-bottom: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: var(--accent-light);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    margin-bottom: 1.5rem; padding: 1rem 1.25rem;
+    background: var(--accent-light); border-radius: var(--radius-sm);
+    border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem;
   }
   .voice-btn {
     background: var(--accent); color: white; border: none;
     border-radius: 50%; width: 50px; height: 50px;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.3rem; cursor: pointer; flex-shrink: 0;
-    transition: all var(--transition);
-    box-shadow: 0 4px 12px rgba(45,125,70,.3);
+    transition: all var(--transition); box-shadow: 0 4px 12px rgba(45,125,70,.3);
   }
   .voice-btn:hover { transform: scale(1.08); }
   .voice-btn.listening { background: #ef4444; animation: pulseRed 1s infinite; }
@@ -1028,8 +752,6 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
   .voice-title { font-weight: 700; font-size: .92rem; }
   .voice-status { font-size: .8rem; color: var(--text-muted); }
   .voice-status.active { color: #ef4444; font-weight: 600; }
-
-  /* ── Sex buttons ── */
   .sex-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
   .sex-btn {
     padding: .7rem; border: 2px solid var(--border);
@@ -1038,14 +760,10 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
     cursor: pointer; color: var(--text-secondary); transition: all var(--transition); text-align: center;
   }
   .sex-btn.active { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
-
-  /* ── Hero stats ── */
   .hero-stats { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; position:relative; }
   .hero-stat { text-align:center; }
   .hero-stat-num { font-size:1.6rem; font-weight:800; color:#a8e6bc; }
   .hero-stat-label { font-size:.75rem; opacity:.7; text-transform:uppercase; letter-spacing:.05em; }
-
-  /* Lang select */
   .lang-select {
     background:var(--surface2); border:1px solid var(--border);
     border-radius:var(--radius-sm); padding:.4rem .75rem;
@@ -1053,8 +771,6 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
     color:var(--text-primary); cursor:pointer; outline:none;
   }
   .lang-select:focus { border-color:var(--accent); }
-
-  /* RTL */
   [dir="rtl"] .input-icon { right:auto; left:1rem; }
   [dir="rtl"] .input-field { padding-left:1rem; padding-right:3rem; }
   </style>
@@ -1107,7 +823,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
   </nav>
 </header>
 
-<!-- SITE NAV -->
+<!-- SITE NAV — ✅ ARTICLES LINK ADDED -->
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav-inner">
     <a href="index.html" class="nav-link active">⚖️ BMI Calculator</a>
@@ -1120,6 +836,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
     <a href="waist-hip-ratio.html" class="nav-link">📐 WHR</a>
     <a href="weight-loss-calculator.html" class="nav-link">📉 Weight Loss</a>
     <a href="about-bmi.html" class="nav-link">📖 About</a>
+    <a href="articles/" class="nav-link">📚 Articles</a>
   </div>
 </nav>
 
@@ -1235,23 +952,17 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
     </button>
     <button class="reset-btn" onclick="resetForm()">↺ Reset</button>
 
-    <!-- ══════════════════════════════════════
-         GRAPHICAL RESULTS
-    ══════════════════════════════════════ -->
+    <!-- GRAPHICAL RESULTS -->
     <div class="results" id="results" aria-live="polite" aria-atomic="true">
       <div style="height:1px;background:var(--border);margin:1.75rem 0 1.5rem"></div>
 
-      <!-- ① SPEEDOMETER GAUGE CARD -->
+      <!-- SPEEDOMETER GAUGE CARD -->
       <div class="gauge-card" id="gauge-card">
-
-        <!-- Odometer number -->
         <div class="odometer-wrap" id="odo-wrap" aria-label="BMI value"></div>
         <div style="text-align:center">
           <div class="bmi-category-banner" id="cat-banner">—</div>
           <div class="bmi-desc-text" id="bmi-desc-text"></div>
         </div>
-
-        <!-- SVG Speedometer -->
         <div class="speedometer-wrap" role="img" aria-label="BMI speedometer gauge">
           <svg id="speed-svg" viewBox="0 0 300 175" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -1259,46 +970,29 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
                 <stop offset="0%" style="stop-color:#ef4444"/>
                 <stop offset="100%" style="stop-color:#1a2e1a"/>
               </linearGradient>
-              <!-- Glow filter -->
               <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="3" result="blur"/>
                 <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
               </filter>
             </defs>
-
-            <!-- Background track (210° arc, -195° to +15° from top) -->
             <path id="track-path" class="speed-track" d=""/>
-
-            <!-- Colored segments (subtle background) -->
             <path class="speed-seg" style="stroke:#3b9fe8" id="seg-u" d=""/>
             <path class="speed-seg" style="stroke:#2d7d46" id="seg-n" d=""/>
             <path class="speed-seg" style="stroke:#f59e0b" id="seg-ow" d=""/>
             <path class="speed-seg" style="stroke:#f97316" id="seg-o1" d=""/>
             <path class="speed-seg" style="stroke:#ef4444" id="seg-o2" d=""/>
             <path class="speed-seg" style="stroke:#991b1b" id="seg-o3" d=""/>
-
-            <!-- Active fill arc -->
             <path class="speed-fill" id="speed-fill" d="" filter="url(#glow)"/>
-
-            <!-- Tick marks (generated by JS) -->
             <g id="ticks-group"></g>
-
-            <!-- Category labels on arc -->
             <g id="arc-labels-group"></g>
-
-            <!-- Needle -->
             <g class="needle-group" id="needle-group">
               <line class="needle-line" x1="150" y1="155" x2="150" y2="62" id="needle-line"/>
               <circle class="needle-hub" cx="150" cy="155" r="8"/>
               <circle cx="150" cy="155" r="5" fill="white" opacity=".7"/>
             </g>
-
-            <!-- Center text -->
             <text class="speed-cat-label" id="gauge-cat-label" x="150" y="148" dy="0"></text>
           </svg>
         </div>
-
-        <!-- Scale legend strips under gauge -->
         <div class="bmi-scale-section" style="margin:0 -0px 0;padding:.75rem 1rem">
           <div class="bmi-scale-title">BMI SCALE</div>
           <div class="bmi-scale-track" id="scale-track">
@@ -1308,9 +1002,9 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
             <span>10</span><span>18.5</span><span>25</span><span>30</span><span>35</span><span>40</span><span>50</span>
           </div>
         </div>
-      </div><!-- end gauge-card -->
+      </div>
 
-      <!-- ② STAT CARDS GRID -->
+      <!-- STAT CARDS GRID -->
       <div class="stat-row" id="stat-row">
         <div class="stat-card" id="sc-ideal">
           <span class="stat-icon">🎯</span>
@@ -1350,7 +1044,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
         </div>
       </div>
 
-      <!-- ③ WHO CLASSIFICATION TABLE (collapsible) -->
+      <!-- WHO CLASSIFICATION TABLE -->
       <div style="margin-top:.25rem">
         <button class="table-toggle-btn" id="tbl-btn" onclick="toggleTable()" aria-expanded="false" aria-controls="tbl-content">
           <span>📋 WHO BMI Classification Table</span>
@@ -1486,6 +1180,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
       <a href="bmi-chart.html" class="related-link"><span class="icon">📋</span> BMI Chart</a>
       <a href="waist-hip-ratio.html" class="related-link"><span class="icon">📐</span> Waist-Hip Ratio</a>
       <a href="weight-loss-calculator.html" class="related-link"><span class="icon">📉</span> Weight Loss</a>
+      <a href="articles/" class="related-link"><span class="icon">📚</span> Health Articles</a>
     </div>
   </div>
   <div class="sidebar-card">
@@ -1526,7 +1221,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
 </div>
 </main>
 
-<!-- FOOTER -->
+<!-- FOOTER — ✅ ARTICLES LINK ADDED -->
 <footer class="footer" role="contentinfo">
   <div style="max-width:1200px;margin:0 auto 1.5rem" aria-hidden="true">
     <div style="max-width:728px;margin:0 auto;text-align:center;padding:4px 0" aria-label="Advertisement">
@@ -1560,6 +1255,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
       <h4>Information</h4>
       <a href="about-bmi.html">About BMI</a>
       <a href="who-guidelines.html">WHO Guidelines</a>
+      <a href="articles/">Health Articles</a>
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Use</a>
       <a href="contact.html">Contact</a>
@@ -1571,7 +1267,7 @@ textarea.input-field { padding: .85rem 1rem; min-height: 140px; resize: vertical
   </div>
 </footer>
 
-<!-- ALL UTILITIES INLINED — no external dependency -->
+<!-- ALL UTILITIES INLINED -->
 <script>
 /* ── THEME ── */
 function toggleTheme() {
@@ -1658,7 +1354,7 @@ window.addEventListener('DOMContentLoaded', function() {
 <script>
 /* jshint esversion: 6 */
 
-/* ─── TRANSLATIONS (key subset) ─── */
+/* ─── TRANSLATIONS ─── */
 const TR = {
   en:{hero_badge:"Trusted Worldwide · Free · No Sign-up",hero_title:"Free Body Mass",hero_title2:"Index Calculator",hero_sub:"Instant BMI with animated speedometer. Voice input, 10 languages, wellness tips.",calc_title:"BMI Calculator",height:"Height",weight:"Weight",calc_btn:"Calculate My BMI"},
   es:{hero_title:"Calculadora IMC",height:"Altura",weight:"Peso",calc_btn:"Calcular mi IMC"},
@@ -1737,10 +1433,8 @@ document.addEventListener('DOMContentLoaded', () => {
   buildOdometer(0);
   renderTips('normal');
   renderFAQs();
-
   const lang = (navigator.language || 'en').slice(0,2).toLowerCase();
   if(TR[lang]){ setLanguage(lang); document.getElementById('lang-select').value = lang; }
-
   if(!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)){
     document.getElementById('voice-section').style.opacity = '.5';
     document.getElementById('voice-btn').disabled = true;
@@ -1771,24 +1465,20 @@ function setSex(s){
   document.getElementById('sex-female').classList.toggle('active', s==='female');
 }
 
-/* ─────────────────────────────────────────
-   SPEEDOMETER SVG BUILDER
-───────────────────────────────────────── */
-const CX = 150, CY = 155, R = 110; // center & radius
-const START_ANGLE = -210; // degrees from 3-o'clock (SVG 0°)
-const SWEEP = 210;        // total sweep degrees
+/* ─── SPEEDOMETER SVG BUILDER ─── */
+const CX = 150, CY = 155, R = 110;
+const START_ANGLE = -210;
+const SWEEP = 210;
 const BMI_MIN = 10, BMI_MAX = 50;
 
 function bmiToAngle(bmi){
   const clamped = Math.min(BMI_MAX, Math.max(BMI_MIN, bmi));
   return START_ANGLE + ((clamped - BMI_MIN) / (BMI_MAX - BMI_MIN)) * SWEEP;
 }
-
 function polarToXY(angleDeg, radius){
   const rad = (angleDeg - 90) * Math.PI / 180;
   return { x: CX + radius * Math.cos(rad), y: CY + radius * Math.sin(rad) };
 }
-
 function arcPath(startAngle, endAngle, radius){
   const s = polarToXY(startAngle, radius);
   const e = polarToXY(endAngle, radius);
@@ -1799,22 +1489,15 @@ function arcPath(startAngle, endAngle, radius){
 function buildSpeedometer(){
   const track = document.getElementById('track-path');
   track.setAttribute('d', arcPath(START_ANGLE, START_ANGLE + SWEEP, R));
-
-  // Segment angles based on BMI categories
   const segs = [
-    {id:'seg-u',  from:BMI_MIN,   to:18.5},
-    {id:'seg-n',  from:18.5,      to:25},
-    {id:'seg-ow', from:25,        to:30},
-    {id:'seg-o1', from:30,        to:35},
-    {id:'seg-o2', from:35,        to:40},
-    {id:'seg-o3', from:40,        to:BMI_MAX}
+    {id:'seg-u',from:BMI_MIN,to:18.5},{id:'seg-n',from:18.5,to:25},
+    {id:'seg-ow',from:25,to:30},{id:'seg-o1',from:30,to:35},
+    {id:'seg-o2',from:35,to:40},{id:'seg-o3',from:40,to:BMI_MAX}
   ];
   segs.forEach(s => {
     const el = document.getElementById(s.id);
     el.setAttribute('d', arcPath(bmiToAngle(s.from), bmiToAngle(s.to), R));
   });
-
-  // Ticks
   const tickG = document.getElementById('ticks-group');
   tickG.innerHTML = '';
   for(let bmi = BMI_MIN; bmi <= BMI_MAX; bmi += 2){
@@ -1828,8 +1511,6 @@ function buildSpeedometer(){
     line.setAttribute('class', isMajor ? 'speed-tick-major' : 'speed-tick');
     tickG.appendChild(line);
   }
-
-  // Arc labels
   const lblG = document.getElementById('arc-labels-group');
   lblG.innerHTML = '';
   [[10,'10'],[18.5,'18.5'],[25,'25'],[30,'30'],[35,'35'],[40,'40'],[50,'50']].forEach(([bmi,txt]) => {
@@ -1841,8 +1522,6 @@ function buildSpeedometer(){
     t.textContent = txt;
     lblG.appendChild(t);
   });
-
-  // Set fill to start (empty)
   const fill = document.getElementById('speed-fill');
   fill.setAttribute('d', arcPath(START_ANGLE, START_ANGLE, R));
 }
@@ -1852,24 +1531,18 @@ function animateSpeedometer(bmi, color){
   const fill = document.getElementById('speed-fill');
   fill.setAttribute('stroke', color);
   fill.setAttribute('d', arcPath(START_ANGLE, targetAngle, R));
-
-  // Needle rotation
   const needleAngle = START_ANGLE + ((Math.min(BMI_MAX,Math.max(BMI_MIN,bmi)) - BMI_MIN)/(BMI_MAX-BMI_MIN))*SWEEP;
   document.getElementById('needle-group').style.transform = `rotate(${needleAngle - START_ANGLE}deg)`;
   document.getElementById('needle-line').setAttribute('stroke', color);
   document.getElementById('needle-group').querySelector('.needle-hub').setAttribute('fill', color);
 }
 
-/* ─────────────────────────────────────────
-   ODOMETER BUILDER & ANIMATOR
-───────────────────────────────────────── */
+/* ─── ODOMETER ─── */
 function buildOdometer(value){
-  const str = value.toFixed(1).padStart(4, '0'); // e.g. "22.4" or "00.0"
+  const str = value.toFixed(1).padStart(4, '0');
   const parts = str.split('.');
   const odoWrap = document.getElementById('odo-wrap');
   odoWrap.innerHTML = '';
-
-  // Integer digits
   parts[0].split('').forEach((d, i) => {
     const wrap = document.createElement('div');
     wrap.className = 'odo-digit-wrap';
@@ -1883,14 +1556,10 @@ function buildOdometer(value){
     `;
     odoWrap.appendChild(wrap);
   });
-
-  // Decimal point
   const sep = document.createElement('div');
   sep.className = 'odo-sep';
   sep.textContent = '.';
   odoWrap.appendChild(sep);
-
-  // Decimal digit
   const decWrap = document.createElement('div');
   decWrap.className = 'odo-digit-wrap';
   decWrap.innerHTML = `
@@ -1908,8 +1577,6 @@ function animateOdometer(bmiValue){
   const str = bmiValue.toFixed(1);
   const [intPart, decPart] = str.split('.');
   const padded = intPart.padStart(2, '0');
-
-  // Integer digits
   padded.split('').forEach((d, i) => {
     const strip = document.getElementById(`odo-strip-${i}`);
     if(!strip) return;
@@ -1917,8 +1584,6 @@ function animateOdometer(bmiValue){
     const digitH = strip.parentElement.clientHeight || 66;
     strip.style.transform = `translateY(-${digit * digitH}px)`;
   });
-
-  // Decimal digit
   const decStrip = document.getElementById('odo-strip-dec');
   if(decStrip){
     const digit = parseInt(decPart) || 0;
@@ -1927,9 +1592,7 @@ function animateOdometer(bmiValue){
   }
 }
 
-/* ─────────────────────────────────────────
-   CALCULATE BMI
-───────────────────────────────────────── */
+/* ─── CALCULATE BMI ─── */
 function calculateBMI(){
   clearErrors();
   let hm, wkg;
@@ -1947,7 +1610,6 @@ function calculateBMI(){
     if(!lbs){ showFieldError('w-err','weight-lbs'); return; }
     hm = (ft*12+inc)*0.0254; wkg = lbs*0.453592;
   }
-
   const bmi = wkg/(hm*hm);
   const age = parseInt(document.getElementById('age-input').value)||30;
   displayResults(bmi, hm, wkg, age);
@@ -1967,47 +1629,26 @@ function displayResults(bmi, hm, wkg, age){
   const rounded = Math.round(bmi*10)/10;
   const catKey  = getCatKey(bmi);
   const cat     = CATS[catKey];
-
-  /* 1. Show results section */
   document.getElementById('results').classList.add('visible');
-
-  /* 2. Build odometer at 0, then animate */
   buildOdometer(0);
   setTimeout(() => animateOdometer(rounded), 80);
-
-  /* 3. Animate speedometer */
   animateSpeedometer(bmi, cat.color);
-
-  /* 4. Update gauge card styling */
   const gc = document.getElementById('gauge-card');
   gc.className = 'gauge-card cat-' + catKey;
-
-  /* 5. Category banner */
   const banner = document.getElementById('cat-banner');
   banner.textContent = cat.emoji + ' ' + cat.label;
-
-  /* 6. Description */
   document.getElementById('bmi-desc-text').textContent = cat.desc;
-
-  /* 7. BMI scale pointer (10–50 range, mapped 0–100%) */
   const scalePercent = Math.min(97, Math.max(3, ((bmi - 10) / 40) * 100));
   const scalePtr = document.getElementById('scale-pointer');
   scalePtr.style.left = scalePercent + '%';
   scalePtr.textContent = rounded;
   scalePtr.style.borderColor = cat.color;
-
-  /* 8. Gauge SVG needle color label */
   const gcLbl = document.getElementById('gauge-cat-label');
   gcLbl.textContent = cat.label.toUpperCase();
   gcLbl.setAttribute('fill', cat.color);
-
-  /* 9. Stat cards */
-  // Ideal weight
   const idealMin = (18.5 * hm * hm), idealMax = (24.9 * hm * hm);
   const fmtW = (kg) => currentUnit==='metric' ? kg.toFixed(1)+' kg' : (kg*2.20462).toFixed(0)+' lbs';
   document.getElementById('sv-ideal').textContent = fmtW(idealMin) + '–' + fmtW(idealMax);
-
-  // BMR
   const bmr = currentSex==='male'
     ? 10*wkg + 6.25*hm*100 - 5*age + 5
     : 10*wkg + 6.25*hm*100 - 5*age - 161;
@@ -2015,42 +1656,28 @@ function displayResults(bmi, hm, wkg, age){
   document.getElementById('sv-bmr').textContent = tdee.toLocaleString() + ' kcal';
   document.getElementById('bmr-sidebar').style.display = 'block';
   document.getElementById('bmr-sidebar-val').textContent = Math.round(bmr);
-
-  // Ponderal Index
   document.getElementById('sv-pi').textContent = (wkg / Math.pow(hm,3)).toFixed(1);
-
-  // Fat mass estimate (rough BMI-based)
   const bfPct = currentSex==='male'
     ? (1.20*bmi + 0.23*age - 16.2)
     : (1.20*bmi + 0.23*age - 5.4);
   const fatKg = Math.max(0, wkg * Math.min(60, Math.max(5, bfPct)) / 100);
   document.getElementById('sv-fat').textContent = fmtW(fatKg);
   document.getElementById('sv-lean').textContent = fmtW(wkg - fatKg);
-
-  // Weight vs healthy
   const diff = wkg - (idealMin + idealMax) / 2;
   const sign = diff > 0 ? '+' : '';
   document.getElementById('sv-whr').textContent = sign + fmtW(diff) + (diff > 0 ? ' over' : ' under');
-
-  // Color accent on stat cards
   document.querySelectorAll('.stat-card').forEach(c => {
     c.style.setProperty('--accent', cat.color);
     c.style.borderColor = 'transparent';
   });
-
-  // Highlight WHO table row
   document.querySelectorAll('#who-tbody tr').forEach(row => {
     const min = parseFloat(row.dataset.min), max = parseFloat(row.dataset.max);
     const hl = bmi >= min && bmi < max;
     row.style.background = hl ? `${cat.color}18` : '';
     row.style.fontWeight  = hl ? '700' : '';
   });
-
-  // Render tips
   const tipCat = catKey==='normal'?'normal':catKey==='underweight'?'underweight':catKey==='overweight'?'overweight':'obese';
   renderTips(tipCat);
-
-  // Scroll
   setTimeout(() => document.getElementById('results').scrollIntoView({behavior:'smooth',block:'nearest'}), 150);
 }
 
